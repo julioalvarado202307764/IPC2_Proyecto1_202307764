@@ -13,7 +13,7 @@ class Program
         while (!salir)
         {
             Console.WriteLine("\n=======================================");
-            Console.WriteLine("  SIMULADOR EPIDEMIOLÓGICO - IPC2 🔬");
+            Console.WriteLine("  SIMULADOR EPIDEMIOLÓGICO  ");
             Console.WriteLine("=======================================");
             Console.WriteLine("1. Cargar archivo XML de pacientes");
             Console.WriteLine("2. Elegir un paciente para su análisis");
@@ -46,12 +46,12 @@ class Program
                     {
                         Simulador sim = new Simulador();
                         sim.SimularUnPeriodo(pacienteActual);
-                        Console.WriteLine($"\n✅ Simulación avanzada 1 período.");
+                        Console.WriteLine($"\n Simulación avanzada 1 período.");
                         Console.WriteLine($"Celdas enfermas actuales: {pacienteActual.Rejilla.ObtenerTamano()}");
                     }
                     else
                     {
-                        Console.WriteLine("\n⚠️ Primero debes elegir un paciente (Opción 2).");
+                        Console.WriteLine("\n  Primero debes elegir un paciente (Opción 2).");
                     }
                     break;
 
@@ -64,27 +64,27 @@ class Program
                     }
                     else
                     {
-                        Console.WriteLine("\n⚠️ Primero debes elegir un paciente (Opción 2).");
+                        Console.WriteLine("\n Primero debes elegir un paciente (Opción 2).");
                     }
                     break;
 
                 case "5":
                     misPacientes.Limpiar(); // Usamos el método que creamos en nuestro TDA
                     pacienteActual = null;
-                    Console.WriteLine("\n✅ Memoria limpiada con éxito.");
+                    Console.WriteLine("\n Memoria limpiada con éxito.");
                     break;
 
                 case "6":
-                    Console.WriteLine("\n🛠️ Opción en construcción... (¡Nuestro próximo paso!)");
+                    Console.WriteLine("\n Opción en construcción... (¡Nuestro próximo paso!)");
                     break;
 
                 case "7":
                     salir = true;
-                    Console.WriteLine("\n¡Nos vemos! Éxitos en el proyecto. 🔥");
+                    Console.WriteLine("\n¡Nos vemos! Éxitos en el proyecto. ");
                     break;
 
                 default:
-                    Console.WriteLine("\n❌ Opción no válida. Intenta de nuevo.");
+                    Console.WriteLine("\n Opción no válida. Intenta de nuevo.");
                     break;
             }
         }
@@ -95,7 +95,7 @@ class Program
     {
         if (misPacientes == null || misPacientes.ObtenerTamano() == 0)
         {
-            Console.WriteLine("\n⚠️ No hay pacientes cargados. Usa la opción 1 primero.");
+            Console.WriteLine("\n No hay pacientes cargados. Usa la opción 1 primero.");
             return;
         }
 
@@ -110,11 +110,11 @@ class Program
         if (int.TryParse(Console.ReadLine(), out int indice) && indice > 0 && indice <= misPacientes.ObtenerTamano())
         {
             pacienteActual = misPacientes.ObtenerEn(indice - 1);
-            Console.WriteLine($"\n✅ Paciente seleccionado: {pacienteActual.Nombre}");
+            Console.WriteLine($"\n Paciente seleccionado: {pacienteActual.Nombre}");
         }
         else
         {
-            Console.WriteLine("\n❌ Selección inválida.");
+            Console.WriteLine("\n Selección inválida.");
         }
     }
 }
