@@ -1,111 +1,111 @@
 using System;
 
-public class ListaEnlazada<T>
+// --- LISTA DE PACIENTES ---
+public class ListaPacientes
 {
-    private Nodo<T> cabeza;
+    private NodoPaciente cabeza;
     private int cantidad;
 
-    public ListaEnlazada()
-    {
-        cabeza = null;
-        cantidad = 0;
-    }
+    public ListaPacientes() { cabeza = null; cantidad = 0; }
 
-    // Método para agregar un elemento al final de la lista
-    public void Agregar(T data)
+    public void Agregar(Paciente data)
     {
-        Nodo<T> nuevoNodo = new Nodo<T>(data);
-
-        if (cabeza == null)
-        {
-            cabeza = nuevoNodo;
-        }
+        NodoPaciente nuevoNodo = new NodoPaciente(data);
+        if (cabeza == null) { cabeza = nuevoNodo; }
         else
         {
-            Nodo<T> actual = cabeza;
-            while (actual.Siguiente != null)
-            {
-                actual = actual.Siguiente;
-            }
+            NodoPaciente actual = cabeza;
+            while (actual.Siguiente != null) { actual = actual.Siguiente; }
             actual.Siguiente = nuevoNodo;
         }
         cantidad++;
     }
 
-    // Método para obtener el tamaño de la lista
-    public int ObtenerTamano()
+    public int ObtenerTamano() { return cantidad; }
+
+    public Paciente ObtenerEn(int indice)
     {
-        return cantidad;
-    }
-
-    // Método para obtener un elemento en una posición específica
-    public T ObtenerEn(int indice)
-    {
-        if (indice < 0 || indice >= cantidad)
-        {
-            throw new IndexOutOfRangeException("Índice fuera de los límites de la lista.");
-        }
-
-        Nodo<T> actual = cabeza;
-        for (int i = 0; i < indice; i++)
-        {
-            actual = actual.Siguiente;
-        }
-
+        NodoPaciente actual = cabeza;
+        for (int i = 0; i < indice; i++) { actual = actual.Siguiente; }
         return actual.Data;
     }
 
-    // Método para limpiar la lista (útil para la opción de limpiar memoria del menú)
-    public void Limpiar()
+    public void Limpiar() { cabeza = null; cantidad = 0; }
+}
+
+// --- LISTA DE CELDAS ---
+public class ListaCeldas
+{
+    private NodoCelda cabeza;
+    private int cantidad;
+
+    public ListaCeldas() { cabeza = null; cantidad = 0; }
+
+    public void Agregar(Celda data)
     {
-        cabeza = null;
-        cantidad = 0;
+        NodoCelda nuevoNodo = new NodoCelda(data);
+        if (cabeza == null) { cabeza = nuevoNodo; }
+        else
+        {
+            NodoCelda actual = cabeza;
+            while (actual.Siguiente != null) { actual = actual.Siguiente; }
+            actual.Siguiente = nuevoNodo;
+        }
+        cantidad++;
     }
-    // Método para buscar un elemento basado en una condición
-    public T Buscar(Func<T, bool> condicion)
+
+    public int ObtenerTamano() { return cantidad; }
+
+    public Celda ObtenerEn(int indice)
     {
-        Nodo<T> actual = cabeza;
+        NodoCelda actual = cabeza;
+        for (int i = 0; i < indice; i++) { actual = actual.Siguiente; }
+        return actual.Data;
+    }
+
+    // Método de búsqueda específico sin usar delegados genéricos
+    public Celda BuscarPorPosicion(int fila, int columna)
+    {
+        NodoCelda actual = cabeza;
         while (actual != null)
         {
-            // Si el dato actual cumple la condición, lo devolvemos
-            if (condicion(actual.Data))
+            if (actual.Data.Fila == fila && actual.Data.Columna == columna)
             {
                 return actual.Data;
             }
             actual = actual.Siguiente;
         }
-
-        // Retorna el valor por defecto (null para objetos) si no lo encuentra
-        return default(T);
+        return null;
     }
-    // Método para eliminar un elemento en una posición específica
-    public void EliminarEn(int indice)
-    {
-        if (indice < 0 || indice >= cantidad)
-        {
-            throw new IndexOutOfRangeException("Índice fuera de los límites de la lista.");
-        }
+}
 
-        // Caso 1: Queremos eliminar el primer elemento (la cabeza)
-        if (indice == 0)
-        {
-            cabeza = cabeza.Siguiente;
-        }
-        // Caso 2: Queremos eliminar un elemento en el medio o al final
+// --- LISTA DE STRINGS (Para el historial del simulador) ---
+public class ListaStrings
+{
+    private NodoString cabeza;
+    private int cantidad;
+
+    public ListaStrings() { cabeza = null; cantidad = 0; }
+
+    public void Agregar(string data)
+    {
+        NodoString nuevoNodo = new NodoString(data);
+        if (cabeza == null) { cabeza = nuevoNodo; }
         else
         {
-            Nodo<T> actual = cabeza;
-            
-            // Avanzamos hasta el nodo ANTERIOR al que queremos eliminar
-            for (int i = 0; i < indice - 1; i++) 
-            {
-                actual = actual.Siguiente;
-            }
-            
-            // "Saltamos" el nodo que queremos borrar, enlazando con el siguiente del siguiente
-            actual.Siguiente = actual.Siguiente.Siguiente;
+            NodoString actual = cabeza;
+            while (actual.Siguiente != null) { actual = actual.Siguiente; }
+            actual.Siguiente = nuevoNodo;
         }
-        
-        cantidad--; // Reducimos el tamaño de la lista
+        cantidad++;
+    }
+
+    public int ObtenerTamano() { return cantidad; }
+
+    public string ObtenerEn(int indice)
+    {
+        NodoString actual = cabeza;
+        for (int i = 0; i < indice; i++) { actual = actual.Siguiente; }
+        return actual.Data;
     }
 }

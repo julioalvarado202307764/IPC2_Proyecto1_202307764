@@ -3,10 +3,10 @@ using System.Xml;
 
 public class LectorXML
 {
-    public ListaEnlazada<Paciente> CargarPacientes(string rutaArchivo)
+    public ListaPacientes CargarPacientes(string rutaArchivo)
     {
         // Instanciamos nuestra lista personalizada
-        ListaEnlazada<Paciente> listaPacientes = new ListaEnlazada<Paciente>();
+        ListaPacientes listaPacientes = new ListaPacientes();
         XmlDocument doc = new XmlDocument();
         
         try

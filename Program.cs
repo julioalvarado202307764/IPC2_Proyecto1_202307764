@@ -3,7 +3,7 @@
 class Program
 {
     // Variables globales para mantener el estado durante la ejecución
-    static ListaEnlazada<Paciente> misPacientes = new ListaEnlazada<Paciente>();
+    static ListaPacientes misPacientes = new ListaPacientes();
     static Paciente pacienteActual = null;
 
     static void Main(string[] args)

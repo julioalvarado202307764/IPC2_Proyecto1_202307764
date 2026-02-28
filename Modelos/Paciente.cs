@@ -9,7 +9,7 @@ public class Paciente
     public int M { get; set; } // Tamaño de la rejilla M x M
     
     // ¡Nuestra estructura personalizada en acción!
-    public ListaEnlazada<Celda> Rejilla { get; set; }
+    public ListaCeldas Rejilla { get; set; }
 
     // Datos para el archivo XML de salida
     public string Resultado { get; set; } // "leve", "grave", o "mortal"
@@ -22,7 +22,7 @@ public class Paciente
         Edad = edad;
         Periodos = periodos;
         M = m;
-        Rejilla = new ListaEnlazada<Celda>();
+        Rejilla = new ListaCeldas();
         
         // Inicializamos los valores de salida por defecto
         Resultado = "";

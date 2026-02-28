@@ -3,21 +3,20 @@ using System;
 public class Simulador
 {
     // 1. Método auxiliar para ver si una celda específica está enferma (1) o sana (0)
-    private int ObtenerEstado(ListaEnlazada<Celda> rejilla, int fila, int columna)
+    private int ObtenerEstado(ListaCeldas rejilla, int fila, int columna)
     {
-        // Buscamos en nuestra lista personalizada
-        Celda celda = rejilla.Buscar(c => c.Fila == fila && c.Columna == columna);
-
-        // Si la celda existe en la lista, está contagiada (1). Si no, está sana (0).
+        // Usamos nuestro método manual específico, cero genéricos ni lambdas
+        Celda celda = rejilla.BuscarPorPosicion(fila, columna);
+        
         if (celda != null)
         {
             return celda.EstadoActual;
         }
-        return 0;
+        return 0; 
     }
 
     // 2. Método para contar cuántos vecinos contagiados tiene una celda
-    private int ContarVecinos(ListaEnlazada<Celda> rejilla, int fila, int columna, int limiteM)
+    private int ContarVecinos(ListaCeldas rejilla, int fila, int columna, int limiteM)
     {
         int vecinos = 0;
 
@@ -44,8 +43,7 @@ public class Simulador
     {
         // Creamos una nueva lista para guardar el estado del siguiente período
         // Así no modificamos la lista actual mientras la estamos evaluando
-        ListaEnlazada<Celda> nuevaRejilla = new ListaEnlazada<Celda>();
-
+       ListaCeldas nuevaRejilla = new ListaCeldas();
         // Recorremos toda la matriz M x M
         for (int f = 1; f <= paciente.M; f++)
         {
@@ -89,7 +87,7 @@ public class Simulador
     }
 
     // Convierte la lista de celdas en un texto único, ej: "1,1|1,2|2,1|..."
-    private string ObtenerFirma(ListaEnlazada<Celda> rejilla)
+    private string ObtenerFirma(ListaCeldas rejilla)
     {
         string firma = "";
         for (int i = 0; i < rejilla.ObtenerTamano(); i++)
@@ -104,7 +102,7 @@ public class Simulador
     public void AnalizarEnfermedad(Paciente paciente)
     {
         // Historial para guardar las firmas de cada período
-        ListaEnlazada<string> historial = new ListaEnlazada<string>();
+        ListaStrings historial = new ListaStrings();
 
         // Guardamos el patrón inicial en el historial (Período 0)
         historial.Agregar(ObtenerFirma(paciente.Rejilla));
