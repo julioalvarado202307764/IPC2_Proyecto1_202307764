@@ -7,12 +7,12 @@ public class Simulador
     {
         // Usamos nuestro método manual específico, cero genéricos ni lambdas
         Celda celda = rejilla.BuscarPorPosicion(fila, columna);
-        
+
         if (celda != null)
         {
             return celda.EstadoActual;
         }
-        return 0; 
+        return 0;
     }
 
     // 2. Método para contar cuántos vecinos contagiados tiene una celda
@@ -43,7 +43,7 @@ public class Simulador
     {
         // Creamos una nueva lista para guardar el estado del siguiente período
         // Así no modificamos la lista actual mientras la estamos evaluando
-       ListaCeldas nuevaRejilla = new ListaCeldas();
+        ListaCeldas nuevaRejilla = new ListaCeldas();
         // Recorremos toda la matriz M x M
         for (int f = 1; f <= paciente.M; f++)
         {

@@ -32,7 +32,7 @@ class Program
                     Console.Write("Ingresa la ruta del archivo (o presiona Enter para usar 'entrada.xml'): ");
                     string ruta = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(ruta)) ruta = "entrada.xml";
-                    
+
                     LectorXML lector = new LectorXML();
                     misPacientes = lector.CargarPacientes(ruta);
                     break;
@@ -75,7 +75,12 @@ class Program
                     break;
 
                 case "6":
-                    Console.WriteLine("\n Opción en construcción... (¡Nuestro próximo paso!)");
+                    EscritorXML escritor = new EscritorXML();
+                    Console.Write("Ingresa el nombre del archivo de salida (ej. salida.xml): ");
+                    string rutaSalida = Console.ReadLine();
+                    if (string.IsNullOrWhiteSpace(rutaSalida)) rutaSalida = "salida.xml";
+
+                    escritor.GenerarArchivo(misPacientes, rutaSalida);
                     break;
 
                 case "7":
@@ -105,7 +110,7 @@ class Program
             Paciente p = misPacientes.ObtenerEn(i);
             Console.WriteLine($"{i + 1}. {p.Nombre} (Rejilla: {p.M}x{p.M})");
         }
-        
+
         Console.Write("\nIngresa el número del paciente que deseas analizar: ");
         if (int.TryParse(Console.ReadLine(), out int indice) && indice > 0 && indice <= misPacientes.ObtenerTamano())
         {

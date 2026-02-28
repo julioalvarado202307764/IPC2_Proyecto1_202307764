@@ -8,11 +8,11 @@ public class LectorXML
         // Instanciamos nuestra lista personalizada
         ListaPacientes listaPacientes = new ListaPacientes();
         XmlDocument doc = new XmlDocument();
-        
+
         try
         {
             doc.Load(rutaArchivo);
-            
+
             // Buscamos todos los nodos <paciente> dentro del XML
             XmlNodeList nodosPaciente = doc.SelectNodes("//paciente");
 
@@ -24,7 +24,7 @@ public class LectorXML
                     string nombre = nodo.SelectSingleNode("datospersonales/nombre")?.InnerText;
                     int edad = int.Parse(nodo.SelectSingleNode("datospersonales/edad")?.InnerText ?? "0");
                     int periodos = int.Parse(nodo.SelectSingleNode("periodos")?.InnerText ?? "0");
-                    
+
                     // Extraemos el tamaño de la rejilla (M)
                     int m = int.Parse(nodo.SelectSingleNode("m")?.InnerText ?? "0");
 
@@ -40,7 +40,7 @@ public class LectorXML
                             // Obtenemos los atributos f (fila) y c (columna)
                             int fila = int.Parse(nodoCelda.Attributes["f"].Value);
                             int columna = int.Parse(nodoCelda.Attributes["c"].Value);
-                            
+
                             // Agregamos la celda contagiada (estado 1) a la lista del paciente
                             nuevoPaciente.Rejilla.Agregar(new Celda(fila, columna, 1));
                         }
@@ -50,7 +50,7 @@ public class LectorXML
                     listaPacientes.Agregar(nuevoPaciente);
                 }
             }
-            Console.WriteLine("¡Archivo XML cargado con éxito! 🔥");
+            Console.WriteLine("¡Archivo XML cargado con éxito!");
         }
         catch (Exception ex)
         {
