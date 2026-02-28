@@ -48,10 +48,15 @@ class Program
                         sim.SimularUnPeriodo(pacienteActual);
                         Console.WriteLine($"\n Simulación avanzada 1 período.");
                         Console.WriteLine($"Celdas enfermas actuales: {pacienteActual.Rejilla.ObtenerTamano()}");
+
+                        // --- GENERAMOS LA GRÁFICA DEL ESTADO ACTUAL ---
+                        Graficador graficador = new Graficador();
+                        string nombreImagen = $"Estado_{pacienteActual.Nombre.Replace(" ", "")}";
+                        graficador.GenerarGrafica(pacienteActual, nombreImagen);
                     }
                     else
                     {
-                        Console.WriteLine("\n  Primero debes elegir un paciente (Opción 2).");
+                        Console.WriteLine("\n Primero debes elegir un paciente (Opción 2).");
                     }
                     break;
 
