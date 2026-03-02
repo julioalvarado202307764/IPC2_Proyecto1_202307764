@@ -92,7 +92,45 @@ class Program
                     salir = true;
                     Console.WriteLine("\n¡Nos vemos! Éxitos en el proyecto. ");
                     break;
+                case "8":
+                    if (misPacientes == null || misPacientes.ObtenerTamano() == 0)
+                    {
+                        Console.WriteLine("\n No hay pacientes cargados. Usa la opción 1 primero.");
+                        break;
+                    }
 
+                    Console.WriteLine("\n🚀 Iniciando Análisis Masivo...");
+                    Simulador simMasivo = new Simulador();
+                    Graficador grafMasivo = new Graficador();
+
+                    // Recorremos la lista completa de pacientes
+                    for (int i = 0; i < misPacientes.ObtenerTamano(); i++)
+                    {
+                        Paciente p = misPacientes.ObtenerEn(i);
+                        Console.WriteLine($"\n--- Analizando: {p.Nombre} ---");
+                        
+                        // 1. Simula automáticamente hasta hallar el resultado
+                        simMasivo.AnalizarEnfermedad(p); 
+                        
+                        // 2. Semáforo visual en la consola
+                        if (p.Resultado == "mortal") Console.ForegroundColor = ConsoleColor.Red;
+                        else if (p.Resultado == "grave") Console.ForegroundColor = ConsoleColor.Yellow;
+                        else Console.ForegroundColor = ConsoleColor.Green;
+                        
+                        Console.WriteLine($"Diagnóstico Final: {p.Resultado.ToUpper()}");
+                        Console.ResetColor(); // Regresamos al color normal de la consola
+
+                        // 3. Genera la gráfica del estado final
+                        grafMasivo.GenerarGrafica(p, $"EstadoFinal_{p.Nombre.Replace(" ", "")}");
+                    }
+
+                    // 4. Generamos el archivo XML de salida con todos los resultados
+                    Console.WriteLine("\n Guardando resultados...");
+                    EscritorXML escritorMasivo = new EscritorXML();
+                    escritorMasivo.GenerarArchivo(misPacientes, "salida_masiva.xml");
+                    
+                    Console.WriteLine("\n ¡Análisis Masivo completado con éxito! Revisa tus archivos. ");
+                    break;
                 default:
                     Console.WriteLine("\n Opción no válida. Intenta de nuevo.");
                     break;
