@@ -22,6 +22,7 @@ class Program
             Console.WriteLine("5. Limpiar datos en memoria");
             Console.WriteLine("6. Generar archivo XML de salida");
             Console.WriteLine("7. Salir");
+            Console.WriteLine("8 Generar archivo carga masiva XML de salida");
             Console.Write("\nElige una opción: ");
 
             string opcion = Console.ReadLine();

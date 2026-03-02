@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pacientes>
+  <paciente>
+    <datospersonales>
+      <nombre>Malzahar</nombre>
+      <edad>25</edad>
+    </datospersonales>
+    <periodos>20</periodos>
+    <m>5</m>
+    <rejilla>
+      <celda f="3" c="2">1</celda>
+      <celda f="3" c="3">1</celda>
+      <celda f="3" c="4">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Veigar</nombre>
+      <edad>22</edad>
+    </datospersonales>
+    <periodos>15</periodos>
+    <m>4</m>
+    <rejilla>
+      <celda f="2" c="2">1</celda>
+      <celda f="2" c="3">1</celda>
+      <celda f="3" c="2">1</celda>
+      <celda f="3" c="3">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Tirador ADC</nombre>
+      <edad>20</edad>
+    </datospersonales>
+    <periodos>10</periodos>
+    <m>5</m>
+    <rejilla>
+      <celda f="1" c="1">1</celda>
+      <celda f="5" c="5">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Sujeto Diamante II</nombre>
+      <edad>30</edad>
+    </datospersonales>
+    <periodos>30</periodos>
+    <m>6</m>
+    <rejilla>
+      <celda f="3" c="3">1</celda>
+      <celda f="3" c="4">1</celda>
+      <celda f="3" c="5">1</celda>
+      <celda f="4" c="2">1</celda>
+      <celda f="4" c="3">1</celda>
+      <celda f="4" c="4">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Estudiante IPC2</nombre>
+      <edad>21</edad>
+    </datospersonales>
+    <periodos>25</periodos>
+    <m>5</m>
+    <rejilla>
+      <celda f="2" c="3">1</celda>
+      <celda f="3" c="2">1</celda>
+      <celda f="3" c="4">1</celda>
+      <celda f="4" c="3">1</celda>
+      <celda f="5" c="5">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Jinx</nombre>
+      <edad>18</edad>
+    </datospersonales>
+    <periodos>15</periodos>
+    <m>6</m>
+    <rejilla>
+      <celda f="2" c="2">1</celda>
+      <celda f="2" c="3">1</celda>
+      <celda f="4" c="5">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Proyecto C Sharp</nombre>
+      <edad>28</edad>
+    </datospersonales>
+    <periodos>40</periodos>
+    <m>6</m>
+    <rejilla>
+      <celda f="2" c="2">1</celda>
+      <celda f="2" c="3">1</celda>
+      <celda f="3" c="2">1</celda>
+      <celda f="4" c="5">1</celda>
+      <celda f="5" c="4">1</celda>
+      <celda f="5" c="5">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Minion Canon</nombre>
+      <edad>1</edad>
+    </datospersonales>
+    <periodos>5</periodos>
+    <m>4</m>
+    <rejilla>
+      <celda f="2" c="2">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Estudiante Aplicada 3</nombre>
+      <edad>24</edad>
+    </datospersonales>
+    <periodos>50</periodos>
+    <m>8</m>
+    <rejilla>
+      <celda f="2" c="3">1</celda>
+      <celda f="3" c="4">1</celda>
+      <celda f="4" c="2">1</celda>
+      <celda f="4" c="3">1</celda>
+      <celda f="4" c="4">1</celda>
+    </rejilla>
+  </paciente>
+
+  <paciente>
+    <datospersonales>
+      <nombre>Garen</nombre>
+      <edad>30</edad>
+    </datospersonales>
+    <periodos>12</periodos>
+    <m>5</m>
+    <rejilla>
+      <celda f="1" c="1">1</celda>
+      <celda f="1" c="5">1</celda>
+      <celda f="5" c="1">1</celda>
+      <celda f="5" c="5">1</celda>
+      <celda f="3" c="3">1</celda>
+    </rejilla>
+  </paciente>
+</pacientes>
