@@ -100,7 +100,7 @@ class Program
                         break;
                     }
 
-                    Console.WriteLine("\n🚀 Iniciando Análisis Masivo...");
+                    Console.WriteLine("\n Iniciando Análisis Masivo...");
                     Simulador simMasivo = new Simulador();
                     Graficador grafMasivo = new Graficador();
 
