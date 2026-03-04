@@ -41,8 +41,48 @@ class Program
                 case "2":
                     ElegirPaciente();
                     break;
-
                 case "3":
+                    if (pacienteActual != null)
+                    {
+                        Console.WriteLine($"\n Iniciando simulación PASO A PASO para: {pacienteActual.Nombre}");
+                        Simulador simPaso = new Simulador();
+                        Graficador grafPaso = new Graficador();
+
+                        // Hacemos un ciclo interactivo basado en los períodos máximos del paciente
+                        for (int i = 1; i <= pacienteActual.Periodos; i++)
+                        {
+                            // 1. Simulamos el período
+                            simPaso.SimularUnPeriodo(pacienteActual);
+                            
+                            // 2. Generamos la imagen con el número de período en el nombre
+                            string nombreImagen = $"Estado_{pacienteActual.Nombre.Replace(" ", "")}_Periodo{i}";
+                            grafPaso.GenerarGrafica(pacienteActual, nombreImagen);
+
+                            // 3. Mostramos la información solicitada en la rúbrica
+                            Console.WriteLine($"\n Período {i} simulado con éxito.");
+                            Console.WriteLine($" Imagen generada: {nombreImagen}.png");
+                            Console.WriteLine($" Celdas enfermas actuales: {pacienteActual.Rejilla.ObtenerTamano()}");
+
+                            // 4. Pausa interactiva (excepto en el último período)
+                            if (i < pacienteActual.Periodos)
+                            {
+                                Console.Write("\n Presiona ENTER para avanzar al siguiente período (o escribe 'salir' para volver al menú)... ");
+                                string input = Console.ReadLine();
+                                if (input != null && input.ToLower() == "salir")
+                                {
+                                    Console.WriteLine(" Simulación paso a paso interrumpida por el usuario.");
+                                    break;
+                                }
+                            }
+                        }
+                        Console.WriteLine("\n🏁 Simulación paso a paso finalizada.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n Primero debes elegir un paciente (Opción 2).");
+                    }
+                    break;
+                /*case "3":
                     if (pacienteActual != null)
                     {
                         Simulador sim = new Simulador();
@@ -59,7 +99,7 @@ class Program
                     {
                         Console.WriteLine("\n Primero debes elegir un paciente (Opción 2).");
                     }
-                    break;
+                    break;*/
 
                 case "4":
                     if (pacienteActual != null)

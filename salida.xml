@@ -1,12 +1,12 @@
 <pacientes>
   <paciente>
       <datospersonales>
-          <nombre>Paciente de Prueba</nombre>
-          <edad>25</edad>
+          <nombre>Rafael</nombre>
+          <edad>20</edad>
       </datospersonales>
-      <periodos>5</periodos>
-      <m>10</m>
-      <resultado>mortal</resultado>
-      <n>1</n>
+      <periodos>50</periodos>
+      <m>35</m>
+      <resultado>grave</resultado>
+      <n>16</n>
   </paciente>
 </pacientes>
