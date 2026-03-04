@@ -75,38 +75,47 @@ class Program
                                 }
                             }
                         }
-                        Console.WriteLine("\n🏁 Simulación paso a paso finalizada.");
+                        Console.WriteLine("\n Simulación paso a paso finalizada.");
                     }
                     else
                     {
                         Console.WriteLine("\n Primero debes elegir un paciente (Opción 2).");
                     }
                     break;
-                /*case "3":
+                    case "4":
                     if (pacienteActual != null)
                     {
-                        Simulador sim = new Simulador();
-                        sim.SimularUnPeriodo(pacienteActual);
-                        Console.WriteLine($"\n Simulación avanzada 1 período.");
-                        Console.WriteLine($"Celdas enfermas actuales: {pacienteActual.Rejilla.ObtenerTamano()}");
-
-                        // --- GENERAMOS LA GRÁFICA DEL ESTADO ACTUAL ---
-                        Graficador graficador = new Graficador();
-                        string nombreImagen = $"Estado_{pacienteActual.Nombre.Replace(" ", "")}";
-                        graficador.GenerarGrafica(pacienteActual, nombreImagen);
-                    }
-                    else
-                    {
-                        Console.WriteLine("\n Primero debes elegir un paciente (Opción 2).");
-                    }
-                    break;*/
-
-                case "4":
-                    if (pacienteActual != null)
-                    {
+                        Console.WriteLine($"\n Iniciando simulación AUTOMÁTICA para: {pacienteActual.Nombre}...");
+                        
                         Simulador simAuto = new Simulador();
-                        Console.WriteLine("\nIniciando análisis automático...");
                         simAuto.AnalizarEnfermedad(pacienteActual);
+
+                        Console.Write($"\n Diagnóstico Final: ");
+                        
+                        // --- LÓGICA DE SEMÁFORO DE COLORES ---
+                        if (pacienteActual.Resultado == "mortal") 
+                            Console.ForegroundColor = ConsoleColor.Red;
+                        else if (pacienteActual.Resultado == "grave") 
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                        else 
+                            Console.ForegroundColor = ConsoleColor.Green;
+                        
+                        // Imprimimos el resultado en mayúsculas y con el color asignado
+                        Console.WriteLine(pacienteActual.Resultado.ToUpper());
+                        
+                        // IMPORTANTE: Restaurar el color original para no pintar todo el menú
+                        Console.ResetColor(); 
+                        // -------------------------------------
+
+                        // Mostramos los datos matemáticos calculados
+                        if (pacienteActual.Resultado == "mortal" || pacienteActual.Resultado == "grave")
+                        {
+                            Console.WriteLine($" Valor de N (período de repetición): {pacienteActual.N}");
+                            if (pacienteActual.N1 > 0)
+                            {
+                                Console.WriteLine($" Valor de N1 (patrón alterno): {pacienteActual.N1}");
+                            }
+                        }
                     }
                     else
                     {
@@ -131,7 +140,7 @@ class Program
 
                 case "7":
                     salir = true;
-                    Console.WriteLine("\n¡Nos vemos! Éxitos en el proyecto. ");
+                    Console.WriteLine("\n¡Nos vemos! ");
                     break;
                 case "8":
                     if (misPacientes == null || misPacientes.ObtenerTamano() == 0)
